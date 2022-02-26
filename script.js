@@ -1,5 +1,8 @@
-const script = document.querySelector(".options");
 
+
+
+const script = document.querySelector(".options");
+const gameOverElement = document.querySelector(".gameover")
 const computerBtn = document.querySelector(".computer");
 
 const player2Btn = document.querySelector(".player2");
@@ -9,6 +12,9 @@ const playBtn = document.querySelector(".play");
 const xBtn = document.querySelector(".X");
 
 const oBtn = document.querySelector(".O")
+
+const player1hangman = document.querySelector("#player-1-hangman")
+const player2hangman = document.querySelector("#player-2-hangman")
 
 
 const player = new Object;
@@ -42,14 +48,14 @@ player2Btn.addEventListener("click", function(){
 
 playBtn.addEventListener("click", function(){
     if( !OPPONENT){
-        computerBtn.style.backgroundColor = "black";
-        player2Btn.style.backgroundColor = "black";
+        computerBtn.style.backgroundColor = "red";
+        player2Btn.style.backgroundColor = "red";
         return;
     }
 
     if( !player ){
-        oBtn.style.backgroundColor = "black";
-        xBtn.style.backgroundColor = "black";
+        oBtn.style.backgroundColor = "red";
+        xBtn.style.backgroundColor = "red";
         return;
     }
     

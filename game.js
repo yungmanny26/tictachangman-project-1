@@ -17,17 +17,34 @@ function init(player, OPPONENT){
 
     
     const xImage = new Image();
-    const oImage = new Image();
     xImage.src = 'img/x-image.png';
+    
+    const oImage = new Image();
     oImage.src ='img/o-image.png';
 
+
+
+
+    const hangmanI1 = new Image();
+    hangmanI1.src ='img hangman/1.png'
+    
+    const hangmanI2 = new Image();
+    hangmanI2.src ='img hangman/2.png'
+    
+    const hangmanI3 = new Image();
+    hangmanI3.src ='img hangman/3.png'
+    
+    const hangmanI4 = new Image();
+    hangmanI4.src ='img hangman/4.png'
+    
+    const hangmanI5 = new Image();
+    hangmanI5.src ='img hangman/5.png'
+    
+    const hangmanI6 = new Image();
+    hangmanI6.src ='img hangman/6.png'
     
 
 
-
-
-    
-  
     const COMBOS = [
         [0, 1, 2],
         [3, 4, 5],
@@ -41,6 +58,9 @@ function init(player, OPPONENT){
 
     
     let GAME_OVER = false;
+ 
+
+    
     
     
     function drawBoard(){
@@ -71,8 +91,8 @@ function init(player, OPPONENT){
         let X = event.clientX - canvas.getBoundingClientRect().x;
         let Y = event.clientY - canvas.getBoundingClientRect().y;
 
-        let i = Math.floor(Y/SPACE_SIZE);
-        let j = Math.floor(X/SPACE_SIZE);
+        let i = Math.floor(Y/SPACE_SIZE, SPACE_SIZE,);
+        let j = Math.floor(X/SPACE_SIZE, SPACE_SIZE,);
 
       
         let id = board[i][j];
@@ -92,6 +112,8 @@ function init(player, OPPONENT){
             GAME_OVER = true;
             return;
         }
+
+       
 
         if(isTie(gameData)){
             showGameOver("tie");
@@ -116,7 +138,7 @@ function init(player, OPPONENT){
                 return;
             }
 
-          
+         
             if(isTie(gameData)){
                 showGameOver("tie");
                 GAME_OVER = true;
@@ -144,7 +166,7 @@ function init(player, OPPONENT){
 
        
         for( let i = 0; i < EMPTY_SPACES.length; i++){
-            E
+    
             let id = EMPTY_SPACES[i];
 
            
@@ -242,7 +264,7 @@ function init(player, OPPONENT){
 
     function showGameOver(player){
         let message = player == "tie" ? "Oops No Winner" : "The Winner is";
-        let imgSrc = `img/${player}.png`;
+        let imgSrc = `img/${player}-image.png`;
 
         gameOverElement.innerHTML = `
             <h1>${message}</1>
@@ -258,6 +280,6 @@ function init(player, OPPONENT){
         let img = player == "X" ? xImage : oImage;
 
        
-        ctx.drawImage(img, j * SPACE_SIZE, i * SPACE_SIZE);
+        ctx.drawImage(img, j * SPACE_SIZE, i * SPACE_SIZE, SPACE_SIZE, SPACE_SIZE);
     }
 }
