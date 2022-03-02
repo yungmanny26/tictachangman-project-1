@@ -23,10 +23,10 @@ function init(player, OPPONENT){
 
     
     const xImage = new Image();
-    xImage.src = './img/x-image.png';
+    xImage.src = './img/X-image.png';
     
     const oImage = new Image();
-    oImage.src ='./img/o-image.png';
+    oImage.src ='./img/O-image.png';
 
 
 
@@ -195,7 +195,7 @@ function init(player, OPPONENT){
 
          
             if(isTie(gameData)){
-                showGameOver("tie");
+                showGameOver();
                 GAME_OVER = true;
                 return;
             }
@@ -322,7 +322,7 @@ function init(player, OPPONENT){
 
 
     function showGameOver(player){
-        let message = player == "tie" ? "Oops No Winner" : "The Winner is";
+        let message = player == "" ? "Oops No Winner" : "The Winner is";
         let imgSrc = `./img/${player}-image.png`;
 
         gameOverElement.innerHTML = `
