@@ -23,31 +23,31 @@ function init(player, OPPONENT){
 
     
     const xImage = new Image();
-    xImage.src = 'img/x-image.png';
+    xImage.src = './img/x-image.png';
     
     const oImage = new Image();
-    oImage.src ='img/o-image.png';
+    oImage.src ='./img/o-image.png';
 
 
 
 
     const hangmanI1 = new Image();
-    hangmanI1.src ='img-hang/1.png'
+    hangmanI1.src ='./img-hang/1.png'
     
     const hangmanI2 = new Image();
-    hangmanI2.src ='img-hang/2.png'
+    hangmanI2.src ='./img-hang/2.png'
     
     const hangmanI3 = new Image();
-    hangmanI3.src ='img-hang/3.png'
+    hangmanI3.src ='./img-hang/3.png'
     
     const hangmanI4 = new Image();
-    hangmanI4.src ='img-hang/4.png'
+    hangmanI4.src ='./img-hang/4.png'
     
     const hangmanI5 = new Image();
-    hangmanI5.src ='img-hang/5.png'
+    hangmanI5.src ='./img-hang/5.png'
     
     const hangmanI6 = new Image();
-    hangmanI6.src ='img-hang/6.png'
+    hangmanI6.src ='./img-hang/6.png'
     
 
 
@@ -323,7 +323,7 @@ function init(player, OPPONENT){
 
     function showGameOver(player){
         let message = player == "tie" ? "Oops No Winner" : "The Winner is";
-        let imgSrc = `img/${player}-image.png`;
+        let imgSrc = `./img/${player}-image.png`;
 
         gameOverElement.innerHTML = `
             <h1>${message}</1>
