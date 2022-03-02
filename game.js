@@ -9,9 +9,15 @@ function init(player, OPPONENT){
     const ROW = 3;
     const SPACE_SIZE = 150;
 
+    let playerWinConut = {
+        man:1,
+        player2:1
+    }
+ 
 
     let gameData = new Array(9);
     
+    let secPlayer = player.two
     
     let currentPlayer = player.man;
 
@@ -26,22 +32,22 @@ function init(player, OPPONENT){
 
 
     const hangmanI1 = new Image();
-    hangmanI1.src ='img hangman/1.png'
+    hangmanI1.src ='img-hang/1.png'
     
     const hangmanI2 = new Image();
-    hangmanI2.src ='img hangman/2.png'
+    hangmanI2.src ='img-hang/2.png'
     
     const hangmanI3 = new Image();
-    hangmanI3.src ='img hangman/3.png'
+    hangmanI3.src ='img-hang/3.png'
     
     const hangmanI4 = new Image();
-    hangmanI4.src ='img hangman/4.png'
+    hangmanI4.src ='img-hang/4.png'
     
     const hangmanI5 = new Image();
-    hangmanI5.src ='img hangman/5.png'
+    hangmanI5.src ='img-hang/5.png'
     
     const hangmanI6 = new Image();
-    hangmanI6.src ='img hangman/6.png'
+    hangmanI6.src ='img-hang/6.png'
     
 
 
@@ -60,7 +66,10 @@ function init(player, OPPONENT){
     let GAME_OVER = false;
  
 
-    
+    function scoreUpdate(score){
+        player1Score.innerHTML = `<image src="./img-hang/${playerWinConut.man}.png"></image>`
+        player2Score.innerHTML = `<image src="./img-hang/${playerWinConut.player2}.png"></image>`
+    }
     
     
     function drawBoard(){
@@ -108,14 +117,60 @@ function init(player, OPPONENT){
 
        
         if(isWinner(gameData, currentPlayer)){
-            showGameOver(currentPlayer);
-            GAME_OVER = true;
-            return;
-        }
+            if(currentPlayer === player.man)playerWinConut.man++
+            else playerWinConut.player2++
+            
+            if(playerWinConut.man <= 6 && playerWinConut.player2 <= 6){
+                gameData = new Array(9);
+                board=[]
+                ctx.clearRect(0,0,canvas.clientWidth,canvas.height)
+                drawBoard();
+                setTimeout(()=>{
 
-       
+                    scoreUpdate(playerWinConut)
+                },100)
+                return;
+            } 
+             showGameOver(currentPlayer);
+                GAME_OVER = true;
+            
+            
+        }
+        
+
+
+    
+    // if(isWinner(gameData, currentPlayer)){
+    //     if(currentPlayer === player.two)playerWinConut.player2++
+    //     else playerWinConut.player.man++
+
+    //     if(playerWinConut.player2 <= 6){
+    //         gameData = new Array(9);
+    //         board=[]
+    //         ctx.clearRect(0,0,canvas.clientWidth,canvas.height)
+    //         drawBoard();
+    //         setTimeout(()=>{
+
+    //             scoreUpdate(playerWinConut)
+    //         },100)
+    //         return ;
+    //     }
+    //     showGameOver(currentPlayer);
+    // //     GAME_OVER = true;
+        
+    // }
 
         if(isTie(gameData)){
+            if(playerWinConut.man <= 6){
+                gameData = new Array(9);
+                board=[]
+                ctx.clearRect(0,0,canvas.clientWidth,canvas.height)
+                drawBoard();
+                setTimeout(()=>{
+                    scoreUpdate(playerWinConut)
+                },100)
+                return ;
+            }
             showGameOver("tie");
             GAME_OVER = true;
             return;
@@ -155,7 +210,8 @@ function init(player, OPPONENT){
     function minimax(gameData, PLAYER){
         
         if( isWinner(gameData, player.computer) ) return { evaluation : +10 };
-        if( isWinner(gameData, player.man)      ) return { evaluation : -10 };
+        if( isWinner(gameData, player.man, player.player2)      ) return { evaluation : -10 };
+       
         if( isTie(gameData)                     ) return { evaluation : 0 };
 
         
@@ -178,6 +234,7 @@ function init(player, OPPONENT){
             move.id = id;
             if( PLAYER == player.computer){
                 move.evaluation = minimax(gameData, player.man).evaluation;
+    
             }else{
                 move.evaluation = minimax(gameData, player.computer).evaluation;
             }
@@ -235,6 +292,7 @@ function init(player, OPPONENT){
 
 
     function isWinner(gameData, player){
+        
         for(let i = 0; i < COMBOS.length; i++){
             let won = true;
 
@@ -248,6 +306,7 @@ function init(player, OPPONENT){
             }
         }
         return false;
+
     }
 
     function isTie(gameData){

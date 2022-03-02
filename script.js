@@ -2,7 +2,9 @@
 
 
 const script = document.querySelector(".options");
+
 const gameOverElement = document.querySelector(".gameover")
+
 const computerBtn = document.querySelector(".computer");
 
 const player2Btn = document.querySelector(".player2");
@@ -15,6 +17,9 @@ const oBtn = document.querySelector(".O")
 
 const player1hangman = document.querySelector("#player-1-hangman")
 const player2hangman = document.querySelector("#player-2-hangman")
+
+const player1Score = document.querySelector(".container1")
+const player2Score = document.querySelector(".container3")
 
 
 const player = new Object;
