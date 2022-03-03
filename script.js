@@ -26,17 +26,17 @@ const player = new Object;
 let OPPONENT;
 
 oBtn.addEventListener("click", function(){
-    player.man = "O";
-    player.computer = "X";
-    player.player2 = "X";
+    player.man = "o";
+    player.computer = "x";
+    player.player2 = "x";
 
     switchActive(xBtn, oBtn);
 });
 
 xBtn.addEventListener("click", function(){
-    player.man = "X";
-    player.computer = "O";
-    player.player2 = "O";
+    player.man = "x";
+    player.computer = "o";
+    player.player2 = "o";
 
     switchActive(oBtn, xBtn);
 });

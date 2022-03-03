@@ -23,10 +23,10 @@ function init(player, OPPONENT){
 
     
     const xImage = new Image();
-    xImage.src = './img/X-image.png';
+    xImage.src = './img/x-image.png';
     
     const oImage = new Image();
-    oImage.src ='./img/O-image.png';
+    oImage.src ='./img/o-image.png';
 
 
 
@@ -336,7 +336,7 @@ function init(player, OPPONENT){
 
     
     function drawOnBoard(player, i, j){
-        let img = player == "X" ? xImage : oImage;
+        let img = player == "x" ? xImage : oImage;
 
        
         ctx.drawImage(img, j * SPACE_SIZE, i * SPACE_SIZE, SPACE_SIZE, SPACE_SIZE);
