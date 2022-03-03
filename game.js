@@ -324,7 +324,7 @@ function init(player, OPPONENT){
     function showGameOver(player){
         let message = player == "" ? "Oops No Winner" : "The Winner is";
         let imgSrc = `./img/${player}-image.png`;
-
+console.log(player)
         gameOverElement.innerHTML = `
             <h1>${message}</1>
             <img class="winner-img" src=${imgSrc} </img>
