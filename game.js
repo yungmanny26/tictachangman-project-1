@@ -23,10 +23,10 @@ function init(player, OPPONENT){
 
     
     const xImage = new Image();
-    xImage.src = './img/X-image.png';
+    xImage.src = './img/x-image.png';
     
     const oImage = new Image();
-    oImage.src ='./img/O-image.png';
+    oImage.src ='./img/o-image.png';
 
 
 
